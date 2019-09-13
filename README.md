@@ -3,6 +3,8 @@ Spell checking using tries by python
 
 This program has total 235878 words
 
+To run make sure super.file and trie.py are in same folder
+
 For Adding new words
   1. remove the comment(#) from addwordsdatabase()
   2. Add new words in word.txt
