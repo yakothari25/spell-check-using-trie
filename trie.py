@@ -1,5 +1,6 @@
 from tkinter import *
 import pickle
+
 class Node(object):
 
     def __repr__(self):
@@ -12,11 +13,10 @@ class Node(object):
         self.is_complete  = False
 
 class Tries(object):
-
+    Totalcount = 235878
     def __init__(self):
         #if()
         self.node = Node(None)
-
 
 
     def addspell(self,string):
@@ -51,7 +51,6 @@ class Tries(object):
 
 def check():
     global screen1
-
     screen1 = Toplevel(screen)
     screen1.title("Check Spelling")
     screen1.geometry("300x250")
@@ -82,8 +81,8 @@ def checksting():
     Label(screen1, text = output,fg="red", font=("calibri", 11)).pack()
 
 def clear():
-    string_entry.delete(0, END)
-
+    screen1.destroy()
+    check()
 
 def addwords():
     global screen1
@@ -99,25 +98,33 @@ def addwords():
     string_entry = Entry(screen1, textvariable=string,width = 30)
     string_entry.pack()
     Label(screen1, text="").pack()
-    Button(screen1, text="Check", width=10, height=1, command=addstring).pack()
+    Button(screen1, text="Add Word", width=10, height=1, command=addstring).pack()
 
 def addstring():
     inputstring = string.get()
     for word in inputstring.casefold().split():
-        tries.addspell(word)
-    Label(screen1, text="Words added", fg="Green", font=("calibri", 11)).pack()
+        if tries.find(word)== False:
+            tries.addspell(word)
+            Label(screen1, text="Word added", fg="Green", font=("calibri", 11)).pack()
+            tries.Totalcount = tries.Totalcount+1
+        else:
+            Label(screen1, text="Words Already Available", fg="Green", font=("calibri", 11)).pack()
     Label(screen1, text="").pack()
-    Button(screen1, text="Clear", width=10, height=1, command=clear).pack()
+    Button(screen1, text="Clear", width=10, height=1, command=cleara).pack()
 
-
+def cleara():
+    screen1.destroy()
+    addwords()
+    
 def saveupdate():
     with open("super.file", "wb") as f:
         pickle.dump(tries, f, pickle.HIGHEST_PROTOCOL)
 
-
 def main_screen():
     global screen
     screen = Tk()
+    var = StringVar()
+    var.set("Total words added:"+str(tries.Totalcount))
     screen.geometry("400x300")
     screen.title("Spell Cheaker using Tries")
     Label(text="Spell Cheaker using Tries", bg="grey", width="300", height="2", font=("Calibri", 13)).pack()
@@ -129,8 +136,9 @@ def main_screen():
     Button(text="Save Updates", height="2", width="30", command=saveupdate).pack()
     Label(text="").pack()
     Label(text="").pack()
-    Label(text="Total words added: 235878").pack()
+    Label(screen,textvariable=var).pack()
     screen.mainloop()
+    
 def addwordsdatabase():
     file = open("word.txt", "r")
     file2 = open("word2.txt", "w")
@@ -143,6 +151,7 @@ def addwordsdatabase():
         except IndexError:
             print(n)
 
+            
 global tries
 tries = Tries()
 
