@@ -1,7 +1,15 @@
+  
+
+    Name: Yogesh KOthari
+    Dpet: Computer Science and Engineering (Shift I)
+    Desgin and Analysis of Algorithm Assignment
+    Roll no: 80
+
+
 # spell-check-using-trie
 Spell checking using tries by python.
 
-Aim: Implement tries using python and demonstrate application of tries in spell checking. 
+***Aim: Implement tries using python and demonstrate application of tries in spell checking. ***
 
   Trie is an efficient information reTrieval data structure. Using Trie, search complexities can be brought to optimal limit (key length). If we store keys in binary search tree, a well balanced BST will need time proportional to M * log N, where M is maximum string length and N is number of keys in tree. Using Trie, we can search the key in O(M) time.
 
@@ -36,6 +44,4 @@ To run make sure super.file and trie.py are in same folder
   2. Enter words
   3. hit Add word
 
-**By: Yogesh Kothari**
-Branch: CSE
-Roll No.:80
+
