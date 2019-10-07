@@ -1,6 +1,6 @@
   
 
-    Name: Yogesh KOthari
+    Name: Yogesh Kothari
     Dpet: Computer Science and Engineering (Shift I)
     Desgin and Analysis of Algorithm Assignment
     Roll no: 80
